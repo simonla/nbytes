@@ -266,7 +266,9 @@ class Vector {
  public:
   Vector(T *data, size_t length, bool isForward)
       : start_(data), length_(length), is_forward_(isForward) {
-    CHECK(length > 0 && data != nullptr);
+    if (length == 0 || data == nullptr) {
+      std::abort();
+    }
   }
 
   // Returns the start of the memory range.
